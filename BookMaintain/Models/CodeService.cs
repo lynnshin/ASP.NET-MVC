@@ -37,7 +37,7 @@ namespace BookMaintain.Models
         public List<SelectListItem> GetBookStatus()
         {
             DataTable dt = new DataTable();
-            string sql = @"SELECT CODE_ID AS Id, CODE_NAME AS Name FROM dbo.BOOK_CODE";
+            string sql = @"SELECT CODE_ID AS Id, CODE_NAME AS Name FROM dbo.BOOK_CODE WHERE CODE_TYPE = 'BOOK_STATUS' ";
             using (SqlConnection conn = new SqlConnection(this.GetDBConnectionString()))
             {
                 conn.Open();

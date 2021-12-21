@@ -38,6 +38,7 @@ namespace BookMaintain.Models
                             AND (data.BOOK_CLASS_ID = @BookClassId OR @BookClassId = '')
                             AND (data.BOOK_KEEPER = @BookKeeperId OR @BookKeeperId = '')
                             AND (data.BOOK_STATUS = @BookStatusId OR @BookStatusId = '')
+                            AND code.CODE_TYPE = 'BOOK_STATUS'
                           ORDER BY BookBoughtDate DESC, BookName";
             using (SqlConnection conn = new SqlConnection(this.GetDBConnectionString()))
             {
@@ -143,7 +144,8 @@ namespace BookMaintain.Models
                                 ON data.BOOK_STATUS = code.CODE_ID
                             LEFT JOIN MEMBER_M member
                                 ON data.BOOK_KEEPER = member.USER_ID
-                           WHERE data.BOOK_ID = @BookId";
+                           WHERE data.BOOK_ID = @BookId
+                            AND code.CODE_TYPE = 'BOOK_STATUS' ";
             using (SqlConnection conn = new SqlConnection(this.GetDBConnectionString()))
             {
                 conn.Open();
