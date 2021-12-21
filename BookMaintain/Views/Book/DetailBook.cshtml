@@ -1,0 +1,108 @@
+﻿
+<h2 style="margin-top:80px;margin-left:15%;font-weight:bold;">書籍明細</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal" style="margin-left:5%;">
+        <dt>
+            <label>書籍名稱</label>
+        </dt>
+        <dd>
+            <label id="BookName"></label>
+        </dd>
+
+        <dt>
+            <label>書籍類別</label>
+        </dt>
+        <dd>
+            <label id="BookClassName"></label>
+        </dd>
+
+        <dt>
+            <label>作者</label>
+        </dt>
+        <dd>
+            <label id="BookAuthor"></label>
+        </dd>
+
+        <dt>
+            <label>購買日期</label>
+        </dt>
+        <dd>
+            <label id="DetailBookBoughtDate"></label>
+        </dd>
+
+        <dt>
+            <label>出版商</label>
+        </dt>
+        <dd>
+            <label id="BookPublisher"></label>
+        </dd>
+
+        <dt>
+            <label>書籍簡介</label>
+        </dt>
+        <dd>
+            <label id="BookNote"></label>
+        </dd>
+
+        <dt>
+            <label>借閱狀態</label>
+        </dt>
+        <dd>
+            <label id="BookStatusName"></label>
+        </dd>
+
+        <dt>
+            <label>借閱人</label>
+        </dt>
+        <dd>
+            <label id="BookKeeperName"></label>
+        </dd>
+
+        <dt>
+            <label>新增日期</label>
+        </dt>
+        <dd>
+            <label id="CreateDate"></label>
+        </dd>
+
+        <dt>
+            <label>最後修改日期</label>
+        </dt>
+        <dd>
+            <label id="ModifyDate"></label>
+        </dd>
+    </dl>
+</div>
+
+<p style="margin-left:45%;">
+    <button class="btn btn-default" id="UpdateBook">修改</button>
+</p>
+
+<script src="~/Scripts/script.js"></script>
+
+<script type="text/javascript">
+    // 抓書籍資料
+    $.ajax({
+        url: "/Book/DetailBook",
+        type: "post",
+        data: { BookId: GetId() },
+        dataType: "json",
+        success: function (Book) {
+            $("#BookName").text(Book.BookName);
+            $("#BookAuthor").text(Book.BookAuthor);
+            $("#BookPublisher").text(Book.BookPublisher);
+            $("#DetailBookBoughtDate").text(Book.BookBoughtDate);
+            $("#BookNote").text(Book.BookNote);
+            $("#BookClassName").text(Book.BookClassName);
+            $("#BookKeeperName").text(Book.BookKeeperName);
+            $("#BookStatusName").text(Book.BookStatusName);
+            $("#CreateDate").text(Book.CreateDate);
+            $("#ModifyDate").text(Book.ModifyDate);
+        },
+        error: function () {
+            $("#notification").data("kendoNotification").show("系統發生錯誤", "error");
+        }
+    });
+</script>
