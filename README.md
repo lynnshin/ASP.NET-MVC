@@ -20,3 +20,10 @@
     
   * 修改
   <img src="https://i.imgur.com/CrcPwu9.png?1" width="40%"/>
+  
+  * 刪除
+  <img src="https://i.imgur.com/yqoDOzE.gif" width="40%"/>
+  <img src="https://i.imgur.com/wMWurSz.gif" width="40%"/>
+  
+
+
